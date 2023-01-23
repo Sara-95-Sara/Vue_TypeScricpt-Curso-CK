@@ -3,20 +3,41 @@
     <div class="title">
         <h4>{{title}}</h4>
     </div>
-    <div class = "links">
-       <a href="http://www.google.es" target="_blank">Google</a>  |
-       <a href="https://vuejs.org" target="_blank">Vue</a>
+    <div class = "links" v-if="links">
+      <a
+        v-for = "link in links"
+        :key = "link.label"
+        :href = "link.link"
+        target = "_blank"
+      >
+        {{ link.label }}
+      </a> 
+      |
+       
     </div>
   </nav>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
+import { Link } from '@/interfaces/link';
 
 export default defineComponent({
     name: 'NavBar',
     props: {
-        title: String
+        title: {
+          type: String,
+          required: true,
+        },
+        links: {
+          type: Array as PropType<Link[]>,
+          default(): Link[] {
+            return [
+              { label: 'Google', link: 'http://www.google.es' },
+              { label: 'Vue', link: 'https://vuejs.org' }
+            ];
+          }
+        }
     }
 })
 </script>

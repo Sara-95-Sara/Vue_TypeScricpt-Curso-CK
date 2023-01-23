@@ -1,5 +1,5 @@
 <template>
-  <NavBar title="Hola" />
+  <NavBar  title = "Hola"/>
   <router-view />
 </template>
 
