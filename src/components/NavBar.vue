@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav :class = "{'bg-red': color==='red'}">
     <div class="title">
         <h4>{{title}}</h4>
     </div>
@@ -37,6 +37,9 @@ export default defineComponent({
               { label: 'Vue', link: 'https://vuejs.org' }
             ];
           }
+        },
+        color: {
+          type: String
         }
     }
 })
@@ -49,20 +52,27 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: gray;
+  background-color: #2c3e50;
 }
 
 h4 {
     color: white;
 }
 
-.links, .title {
+.links, 
+.title {
     padding: 20px;
 }
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: white;
+  padding: 10px;
 }
+
+.bg-red {
+  background-color: red;
+}
+
 
 </style>

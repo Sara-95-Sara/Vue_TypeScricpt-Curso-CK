@@ -1,6 +1,14 @@
 <template>
-  <NavBar  title = "Hola"/>
-  <router-view />
+  <NavBar  
+    title = "Hola Mundo"
+    :color = " 'red' "
+    :links = "[
+      { label: 'Google', link: 'http://www.google.es' },
+      { label: 'Vue', link: 'https://vuejs.org' },
+      { label: 'Facebook', link: 'http://facebook.es' },
+    ]"
+  />
+ <!--  <router-view /> -->
 </template>
 
 <script lang="ts">
@@ -28,7 +36,6 @@ export default defineComponent({
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 
 nav a.router-link-exact-active {
