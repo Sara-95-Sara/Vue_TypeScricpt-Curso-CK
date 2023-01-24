@@ -5,7 +5,7 @@
     :links = "[
       { label: 'Google', link: 'http://www.google.es' },
       { label: 'Vue', link: 'https://vuejs.org' },
-      { label: 'Facebook', link: 'http://facebook.es' },
+      { label: 'Facebook import', link: 'http://facebook.es', style: 'important-link' },
     ]"
   />
  <!--  <router-view /> -->

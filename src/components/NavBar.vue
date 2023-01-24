@@ -8,6 +8,7 @@
         v-for = "link in links"
         :key = "link.label"
         :href = "link.link"
+        :class = "link.style"
         target = "_blank"
       >
         {{ link.label }}
@@ -34,7 +35,8 @@ export default defineComponent({
           default(): Link[] {
             return [
               { label: 'Google', link: 'http://www.google.es' },
-              { label: 'Vue', link: 'https://vuejs.org' }
+              { label: 'Vue', link: 'https://vuejs.org' },
+              { label: 'Facebook import', link: 'http://facebook.es', style: 'important-link' }
             ];
           }
         },
@@ -72,6 +74,10 @@ nav a {
 
 .bg-red {
   background-color: red;
+}
+
+.important-link {
+  font-size: larger;
 }
 
 
