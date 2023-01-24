@@ -16,7 +16,7 @@
 
   <!-- <CustomButton></CustomButton>  -->
   <!-- da igual aqui los slots como ponemos,ya esta definido en CustomButton.vue-->
-  <custom-button>
+  <!-- <custom-button>
     <template v-slot:left-icon>
       <span> usuario </span>
     </template>
@@ -24,7 +24,30 @@
     <template v-slot:right-icon>
       <span> buscar </span>
     </template>
-  </custom-button>
+  </custom-button>   -->
+  <br />
+  <custom-card>
+    <template v-slot:header>
+       <h3>Card header</h3>
+    </template>
+    <template v-slot:body>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus dolores minima illum eaque
+        assumenda cum quam possimus repudiandae facilis dolorum?
+        Accusamus animi qui temporibus quia cumque ratione et! Eum, ad!
+      </p> 
+
+      <custom-button>
+        hola
+      </custom-button>
+
+    </template>
+    <template v-slot:footer>
+       <div>
+        <span>Footer</span>
+       </div>
+    </template>
+  </custom-card>
 
  <!--  <router-view /> -->
 </template>
@@ -34,12 +57,14 @@ import { defineComponent } from 'vue'
 import NavBar from './components/NavBar.vue';
 import { Link } from './interfaces/link';
 import CustomButton from './components/CustomButton.vue';
+import CustomCard from './components/CustomCard.vue';
 
 export default defineComponent({
   name: 'AppComponent',
   components: {
     NavBar,
     CustomButton,
+    CustomCard,
   },
 
   // hay solo unico setup, con todas las funciones que queremos utilizar fuera de script tambien.
