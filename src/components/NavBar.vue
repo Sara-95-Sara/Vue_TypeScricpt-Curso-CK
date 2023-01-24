@@ -4,7 +4,7 @@
         <h4>{{title}}</h4>
     </div>
     <div class = "links" v-if="links">
-      <a
+      <!--<a
         v-for = "link in links"
         :key = "link.label"
         :href = "link.link"
@@ -12,7 +12,16 @@
         target = "_blank"
       >
         {{ link.label }}
-      </a> 
+      </a>  -->
+      
+      <!--   v-on:click   es lo mismo que    @click     -->
+      <button 
+        v-for="link in links"
+        :key = "link.label"
+        @click="$emit('buttonClicked', link)" 
+      >
+        {{ link.label }}
+      </button>
       |
        
     </div>
@@ -43,6 +52,11 @@ export default defineComponent({
         color: {
           type: String
         }
+    },
+    
+    // cada componente tiene su setup()
+    setup() {
+      return {}
     }
 })
 </script>
