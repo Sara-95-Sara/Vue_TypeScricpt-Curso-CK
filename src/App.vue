@@ -10,8 +10,22 @@
     
     @buttonClicked = "alertaClick($event)"
   />
- <!--  alertaClick($event)"   es lo mismo que  alertaClick"  
+       <!--  alertaClick($event)"   es lo mismo que  alertaClick"  
        lo que @buttonClicked devuelve, lo va a pasar a alertaClick($event)   --> 
+  <br /><br />
+
+  <!-- <CustomButton></CustomButton>  -->
+  <!-- da igual aqui los slots como ponemos,ya esta definido en CustomButton.vue-->
+  <custom-button>
+    <template v-slot:left-icon>
+      <span> usuario </span>
+    </template>
+    <span style = "font-size:xx-large"> desde el slot </span>
+    <template v-slot:right-icon>
+      <span> buscar </span>
+    </template>
+  </custom-button>
+
  <!--  <router-view /> -->
 </template>
 
@@ -19,11 +33,13 @@
 import { defineComponent } from 'vue'
 import NavBar from './components/NavBar.vue';
 import { Link } from './interfaces/link';
+import CustomButton from './components/CustomButton.vue';
 
 export default defineComponent({
   name: 'AppComponent',
   components: {
-    NavBar
+    NavBar,
+    CustomButton,
   },
 
   // hay solo unico setup, con todas las funciones que queremos utilizar fuera de script tambien.
