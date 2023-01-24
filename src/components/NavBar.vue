@@ -15,15 +15,24 @@
         {{ link.label }}
       </a>  -->
       
+      <!-- Emitir eventos directamente -->
       <!--   v-on:click   es lo mismo que    @click     -->
-      <button 
+      <!-- <button 
         v-for="link in links"
         :key = "link.label"
         @click="$emit('buttonClicked', link)" 
       >
         {{ link.label }}
-      </button>
-      |
+      </button>  -->
+      
+      <!-- Emitir eventos a traves de una funcion que haga mas cosas -->
+      <button 
+        v-for="link in links"
+        :key = "link.label"
+        @click = "onClick(link)"
+      >
+        {{ link.label }}
+      </button>  -->
        
     </div>
   </nav>
@@ -41,6 +50,7 @@ interface NavbarProps {
 
 export default defineComponent({
     name: 'NavBar',
+    emits: ['buttonClicked'],
     props: {
         title: {
           type: String,
@@ -64,7 +74,7 @@ export default defineComponent({
     // cada componente tiene su setup()
     // methods() hace igual que setup(), solo que dentro de methods para devolver las variables hay que escribir  data, etc.. 
     // pero setup todo inclue
-    setup(props: NavbarProps) {
+    setup(props: NavbarProps, ctx) {
       const greeting = ref<string>('Saludos!');
       if(props.color === 'red') {
         greeting.value = 'Feliz Navidad!'
@@ -72,6 +82,12 @@ export default defineComponent({
 
       return {
         greeting,
+        onClick: (link: Link) => {
+          console.log('onClick', link);
+          // hacer cosas importantes de programador serio
+          
+          ctx.emit('buttonClicked', link)
+        }
       }
     }
 })
