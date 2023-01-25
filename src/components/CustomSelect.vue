@@ -6,7 +6,7 @@
         <option value= "blue">Azul</option>
     </select>
 
-    <h4> Color seleccionado: {{ color }}</h4>
+    <h4> Color seleccionado: {{ colorLabel }}</h4>
     <br />
     <input type = "text"  v-model = "texto" />
     <h4>Texto: {{ texto }}</h4>
@@ -14,16 +14,18 @@
     <input type = "number"  v-model.lazy = "numero" />
     <h4>Texto: {{ numero }}</h4>
 
-    <input type = "color" v-model = "color" />
+    <h3>{{ now }}</h3>
+
+    <!--<input type = "color" v-model = "color" />   -->
     
 </template>
 
 <script lang = "ts">
-import { defineComponent, onBeforeMount, onMounted, onUnmounted, onUpdated, ref } from 'vue';
+import { computed, defineComponent, onBeforeMount, onMounted, onUnmounted, onUpdated, ref } from 'vue';
 
 export default defineComponent({
     setup() {
-        const color = ref<string>("green");
+        const color = ref<string>("red");
         const texto = ref<string>('');
         const numero = ref<number>(0);
         
@@ -52,6 +54,17 @@ export default defineComponent({
             color,
             texto,
             numero,
+
+            // variable Computed
+            colorLabel: computed(() => 
+              color.value === "red"
+                ? "Rojo"
+                : color.value === "green"
+                ? "Verde"
+                : "Azul"
+            ),
+
+            now: computed(() => new Date().toDateString())
         }
     }
 });
