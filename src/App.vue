@@ -25,6 +25,7 @@
       <span> buscar </span>
     </template>
   </custom-button>   -->
+  <CustomSelect />
   <br />
   <custom-card>
     <template v-slot:header>
@@ -58,6 +59,7 @@ import NavBar from './components/NavBar.vue';
 import { Link } from './interfaces/link';
 import CustomButton from './components/CustomButton.vue';
 import CustomCard from './components/CustomCard.vue';
+import CustomSelect from './components/CustomSelect.vue';
 
 export default defineComponent({
   name: 'AppComponent',
@@ -65,6 +67,7 @@ export default defineComponent({
     NavBar,
     CustomButton,
     CustomCard,
+    CustomSelect,
   },
 
   // hay solo unico setup, con todas las funciones que queremos utilizar fuera de script tambien.
