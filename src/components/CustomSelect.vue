@@ -21,7 +21,7 @@
 </template>
 
 <script lang = "ts">
-import { computed, defineComponent, onBeforeMount, onMounted, onUnmounted, onUpdated, ref } from 'vue';
+import { computed, defineComponent, onBeforeMount, onMounted, onUnmounted, onUpdated, ref, watch } from 'vue';
 
 export default defineComponent({
     setup() {
@@ -49,6 +49,11 @@ export default defineComponent({
     
          // eso muesta antes de onMounted, porque tiene que terminar todo depues onMounted().
         console.log("Seguimos en el setup()");
+
+        // va a observar  color , si cambia, muestra alert
+        watch(color, (value: string, oldvalue: string) => {
+            alert(`Has cambiado el color de ${oldvalue} a ${value}`);
+        });
     
         return {
             color,
