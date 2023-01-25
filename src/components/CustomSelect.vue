@@ -13,10 +13,13 @@
 
     <input type = "number"  v-model.lazy = "numero" />
     <h4>Texto: {{ numero }}</h4>
+
+    <input type = "color" v-model = "color" />
+    
 </template>
 
 <script lang = "ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, onBeforeMount, onMounted, onUnmounted, onUpdated, ref } from 'vue';
 
 export default defineComponent({
     setup() {
@@ -24,6 +27,27 @@ export default defineComponent({
         const texto = ref<string>('');
         const numero = ref<number>(0);
         
+        onMounted(() => {
+           console.log('2. onMounted');
+        });
+    
+        // eso cuando navegamos
+        onUnmounted(() => {
+            console.log("onUnMounted");
+        });
+
+        onBeforeMount(() => {
+           console.log("onBeforeMount");
+        });
+
+        // cuando actualiza algo 
+        onUpdated(() => {
+            console.log("onUpdated");
+        });
+    
+         // eso muesta antes de onMounted, porque tiene que terminar todo depues onMounted().
+        console.log("Seguimos en el setup()");
+    
         return {
             color,
             texto,

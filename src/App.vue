@@ -76,6 +76,7 @@ export default defineComponent({
     const hola = () => alert('hola');  // se escribe mas arriba, para poder utilizarlo p. ej. dentro de alertaClick f-n tambien
     console.log("Ciclo de vida. 1. Creamos en el setup");
 
+    /*
     // Hooks.Ciclo de Vida.  montarlo en el DOM, que aparezca.  
     //es asyncrono
     //Callback
@@ -94,7 +95,7 @@ export default defineComponent({
     
     // eso muesta antes de onMounted, porque tiene que terminar todo depues onMounted().
     console.log("Seguimos en el setup()");
-    
+    */
 
     return {
       alertaClick: (link: Link) => alert(link.label + 'Pulsado!'),
