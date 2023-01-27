@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue';
 import AboutView from '../views/AboutView.vue';
+import haveRoleGuard from './role-guard';
 
 
 const routes: Array<RouteRecordRaw> = [
@@ -15,6 +16,7 @@ const routes: Array<RouteRecordRaw> = [
     name: 'about',  // name no es obligatorio
     //component: AboutView
     // Lazy Loading: no carga los archivos hasta que se visita este path
+    beforeEnter: [haveRoleGuard],
     component: () =>
       import(/* webpackChunkName: "aboutView" */ "../views/AboutView.vue"),
   },
