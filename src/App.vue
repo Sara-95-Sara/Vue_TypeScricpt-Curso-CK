@@ -14,6 +14,15 @@
   <NavBarLinks />
 
   <router-view /> 
+  
+  <!--
+  <DetailView
+    :id = "4"
+    userRole = "desde componente"
+    >
+  </DetailView>
+  -->
+
 </template>
 
 <script lang="ts">
@@ -21,6 +30,7 @@ import { defineComponent } from 'vue'
 import NavBar from './components/NavBar.vue';
 import { Link } from './interfaces/link';
 import NavBarLinks from './components/NavBarLinks.vue';
+//import DetailView from './views/DetailView.vue';
 
 
 export default defineComponent({
@@ -28,6 +38,7 @@ export default defineComponent({
   components: {
     NavBar,
     NavBarLinks,
+   // DetailView,
   },
 
   // hay solo unico setup, con todas las funciones que queremos utilizar fuera de script tambien.
