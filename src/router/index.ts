@@ -17,16 +17,13 @@ const routes: Array<RouteRecordRaw> = [
     // Lazy Loading: no carga los archivos hasta que se visita este path
     component: () =>
       import(/* webpackChunkName: "aboutView" */ "../views/AboutView.vue"),
-  }
-  /*
+  },
   {
-    path: "/about",
-    name: "about",
-    // Lazy loading: no carga los archivos hasta que se visita este path
+    path: '/detail/:id',
+    name: 'detail',
     component: () =>
-      import(/* webpackChunkName: "aboutView" "../views/AboutView.vue"),
-  }
-  */
+      import(/* webpackChunkName: "detailView" */ "../views/DetailView.vue"),
+  },
 ]
 
 const router = createRouter({
