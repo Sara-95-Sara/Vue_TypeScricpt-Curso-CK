@@ -1,12 +1,18 @@
 <template>
-    <div>
-        <h1>Detalle: {{ id }}</h1>
+    <div v-if = "product">
+        <h1>Nombre: {{ product?.title }}</h1>
+        <h1>id: {{ product.id }}</h1> 
+        <h2>Precio: {{ product.price }}</h2>
         <h2>Role: {{ userRole }}</h2>
+        <img :src = "product.images" alt = "image">
+    </div>
+    <div v-else>
+        Cargando...
     </div>
 </template>
 
 <script lang ="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 //import axios from 'axios';
 import fakeShopApi from '@/api/fakeShopApi';
 import { Product } from '@/models/product';
@@ -22,15 +28,11 @@ export default defineComponent({
     },
 
     setup(props) {
-        console.log(props.id);
-        /*axios.get('https://api.escuelajs.co/api/v1/products').then((resp) => {
-            console.log(resp.data[0]);
-        });
-        */
-       fakeShopApi
-        .get<unknown, AxiosResponse<Product>>(`/products/${props.id}`)
-        .then((resp) => console.log(resp.data));
-        return {}
+        let product = ref<Product>();
+        fakeShopApi
+          .get<unknown, AxiosResponse<Product>>(`/products/${props.id}`)
+          .then((resp) => product.value = resp.data);
+        return {product};
     }
 })
 
