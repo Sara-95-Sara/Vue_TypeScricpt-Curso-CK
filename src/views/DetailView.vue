@@ -6,8 +6,11 @@
 </template>
 
 <script lang ="ts">
-import { defineComponent } from 'vue'
-
+import { defineComponent } from 'vue';
+//import axios from 'axios';
+import fakeShopApi from '@/api/fakeShopApi';
+import { Product } from '@/models/product';
+import { AxiosResponse } from 'axios';
 
 export default defineComponent({
     props: {
@@ -18,8 +21,15 @@ export default defineComponent({
         userRole: String
     },
 
-    setup() {
-
+    setup(props) {
+        console.log(props.id);
+        /*axios.get('https://api.escuelajs.co/api/v1/products').then((resp) => {
+            console.log(resp.data[0]);
+        });
+        */
+       fakeShopApi
+        .get<unknown, AxiosResponse<Product>>(`/products/${props.id}`)
+        .then((resp) => console.log(resp.data));
         return {}
     }
 })

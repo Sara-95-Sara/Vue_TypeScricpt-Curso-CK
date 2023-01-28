@@ -16,7 +16,7 @@ const routes: Array<RouteRecordRaw> = [
     name: 'about',  // name no es obligatorio
     //component: AboutView
     // Lazy Loading: no carga los archivos hasta que se visita este path
-    beforeEnter: [haveRoleGuard],
+    //beforeEnter: [haveRoleGuard],
     component: () =>
       import(/* webpackChunkName: "aboutView" */ "../views/AboutView.vue"),
   },
