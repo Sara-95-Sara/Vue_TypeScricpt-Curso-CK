@@ -2,7 +2,7 @@
     <div v-if = "product">
         <h1>Nombre: {{ product?.title }}</h1>
         <h1>id: {{ product.id }}</h1> 
-        <h2>Precio: {{ product.price }}</h2>
+        <h2>Precio: {{ product.price }} $</h2>
         <h2>Role: {{ userRole }}</h2>
         <img :src = "product.images" alt = "image">
     </div>
