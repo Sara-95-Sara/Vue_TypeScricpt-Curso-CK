@@ -34,13 +34,15 @@
         {{ link.label }}
       </button>  -->
        
+      <button @click = "changeGreeting">Cambiar estado</button>
     </div>
   </nav>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref } from 'vue';
+import { computed, defineComponent, PropType, ref, watch } from 'vue';
 import { Link } from '@/interfaces/link';
+import { useStore } from 'vuex';
 
 interface NavbarProps {
   title: string,
@@ -75,18 +77,30 @@ export default defineComponent({
     // methods() hace igual que setup(), solo que dentro de methods para devolver las variables hay que escribir  data, etc.. 
     // pero setup todo inclue
     setup(props: NavbarProps, ctx) {
-      const greeting = ref<string>('Saludos!');
+      const store = useStore();
+      /*const greeting = ref<string>(store.state.greeting);
       if(props.color === 'red') {
         greeting.value = 'Feliz Navidad!'
       }
+      */
+
+      /*
+      watch(store.state.greeting, () => {
+        console.log('cambia state')
+        greeting.value = store.state.greeting;
+      });
+      */
 
       return {
-        greeting,
+        greeting: computed(() => store.getters['saludo']),
         onClick: (link: Link) => {
           console.log('onClick', link);
           // hacer cosas importantes de programador serio
           
-          ctx.emit('buttonClicked', link)
+          ctx.emit('buttonClicked', link);
+        },
+        changeGreeting: () => {
+          store.commit('cambiaSaludo', 'Que locura de Vuex');
         }
       }
     }
