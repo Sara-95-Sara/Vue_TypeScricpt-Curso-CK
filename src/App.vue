@@ -22,6 +22,7 @@
     >
   </DetailView>
   -->
+  <CartList />
 
 </template>
 
@@ -30,6 +31,7 @@ import { defineComponent } from 'vue'
 import NavBar from './components/NavBar.vue';
 import { Link } from './interfaces/link';
 import NavBarLinks from './components/NavBarLinks.vue';
+import CartList from './components/CartList.vue';
 //import DetailView from './views/DetailView.vue';
 
 
@@ -38,6 +40,7 @@ export default defineComponent({
   components: {
     NavBar,
     NavBarLinks,
+    CartList,
    // DetailView,
   },
 

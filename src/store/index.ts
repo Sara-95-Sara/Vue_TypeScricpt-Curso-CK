@@ -1,27 +1,21 @@
-import { createStore } from 'vuex'
+import { User } from "@/models/user";
+import { createStore } from "vuex";
+import cartModule from "./cart.ts";
 
-export default createStore({
+export interface IState {
+  authUser: User | null; 
+  greeting: string;
+}
+
+export default createStore<IState>({
   state: {
-    authProduct: {
-      id: 5,
-      email: 'hola@email.com',
-      name: 'Pepe',
-    },
-    greeting: 'Hola',
+    authUser: null,
+    greeting: "Hola a todas!",
   },
   mutations: {
-    cambiaSaludo(state, saludo: string) {
-      state.greeting = saludo;
-    }
   },
-  
-  getters: {
-    saludo(state, getters) {
-      return state.greeting;
-    }
-  },
-  actions: {
-  },
+  actions: {},
   modules: {
-  }
-})
+    cart: cartModule
+  },
+});
