@@ -26,7 +26,7 @@
       </button>  -->
       
       <!-- Emitir eventos a traves de una funcion que haga mas cosas -->
-      <button 
+      <button class="btn btn-primary"
         v-for="link in links"
         :key = "link.label"
         @click = "onClick(link)"
@@ -34,7 +34,7 @@
         {{ link.label }}
       </button>  -->
        
-      <button @click = "changeGreeting">Cambiar estado</button>
+      <button class="btn btn-primary" @click = "changeGreeting" >Cambiar estado</button>
     </div>
   </nav>
 </template>
