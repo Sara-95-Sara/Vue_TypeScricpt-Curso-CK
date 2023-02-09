@@ -17,10 +17,11 @@
       
       <!-- Emitir eventos directamente -->
       <!--   v-on:click   es lo mismo que    @click     -->
-      <!-- <button 
+      <button
         v-for="link in links"
-        :key = "link.label"
-        @click="$emit('buttonClicked', link)" 
+        :key="link.label"
+        @click="onClick(link)"
+        class="btn btn-primary"
       >
         {{ link.label }}
       </button>  -->
@@ -35,14 +36,16 @@
       </button>  -->
        
       <button class="btn btn-primary" @click = "changeGreeting" >Cambiar estado</button>
+      <button @click="toggleCart" class="btn btn-secondary">Carrito</button>
     </div>
   </nav>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType, ref, watch } from 'vue';
+import { computed, defineComponent, PropType } from 'vue';
 import { Link } from '@/interfaces/link';
 import { useStore } from 'vuex';
+import { useCart } from "@/composables/useCart";
 
 interface NavbarProps {
   title: string,
@@ -91,6 +94,7 @@ export default defineComponent({
       });
       */
 
+      const { toggleCart } = useCart();
       return {
         greeting: computed(() => store.getters['saludo']),
         onClick: (link: Link) => {
@@ -101,7 +105,8 @@ export default defineComponent({
         },
         changeGreeting: () => {
           store.commit('cambiaSaludo', 'Que locura de Vuex');
-        }
+        },
+        toggleCart,
       }
     }
 })

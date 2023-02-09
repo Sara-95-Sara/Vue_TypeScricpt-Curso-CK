@@ -4,7 +4,11 @@
         <h1>id: {{ product.id }}</h1> 
         <h2>Precio: {{ product.price }} $</h2>
         <h2>Role: {{ userRole }}</h2>
-        <img :src = "product.images" alt = "image">
+        <img :src = "product.images" alt = "image" />
+
+        <button @click="addElementToCart(product)" class="btn btn-success">
+           Añadir al Carrito
+        </button>
     </div>
     <div v-else>
         Cargando...
@@ -13,6 +17,7 @@
 
 <script lang ="ts">
 import { defineComponent, ref } from 'vue';
+import { useCart } from "@/composables/useCart";
 //import axios from 'axios';
 import fakeShopApi from '@/api/fakeShopApi';
 import { Product } from '@/models/product';
@@ -28,11 +33,15 @@ export default defineComponent({
     },
 
     setup(props) {
+        const { addElementToCart } = useCart();
         let product = ref<Product>();
         fakeShopApi
           .get<unknown, AxiosResponse<Product>>(`/products/${props.id}`)
-          .then((resp) => product.value = resp.data);
-        return {product};
+          .then((resp) => (product.value = resp.data));
+        return {
+           product,
+           addElementToCart,
+        };
     }
 })
 

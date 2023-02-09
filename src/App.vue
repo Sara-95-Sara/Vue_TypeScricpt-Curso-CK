@@ -22,7 +22,7 @@
     >
   </DetailView>
   -->
-  <CartList />
+  <CartList v-show="isCartOpen"/>
 
 </template>
 
@@ -32,6 +32,7 @@ import NavBar from './components/NavBar.vue';
 import { Link } from './interfaces/link';
 import NavBarLinks from './components/NavBarLinks.vue';
 import CartList from './components/CartList.vue';
+import { useCart } from "./composables/useCart";
 //import DetailView from './views/DetailView.vue';
 
 
@@ -47,10 +48,11 @@ export default defineComponent({
   // hay solo unico setup, con todas las funciones que queremos utilizar fuera de script tambien.
   
   setup() {
+    const { isCartOpen } = useCart();
     
     return {
       alertaClick: (link: Link) => alert(link.label + 'Pulsado!'),
-      
+      isCartOpen,
     }
 
   }

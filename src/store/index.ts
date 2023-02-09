@@ -1,9 +1,9 @@
-import { User } from "@/models/user";
+import { Product } from "@/models/product";
 import { createStore } from "vuex";
 import cartModule from "./cart.ts";
 
 export interface IState {
-  authUser: User | null; 
+  authUser: Product | null; 
   greeting: string;
 }
 
@@ -13,6 +13,14 @@ export default createStore<IState>({
     greeting: "Hola a todas!",
   },
   mutations: {
+    cambiaSaludo(state, saludo: string) {
+      return state.greeting;
+    }
+  },
+  getters: {
+    saludo(state) {
+      return state.greeting;
+    }
   },
   actions: {},
   modules: {
