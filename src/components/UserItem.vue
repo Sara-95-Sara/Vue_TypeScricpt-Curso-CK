@@ -11,6 +11,9 @@
                    @click = "$emit('addCart', user)">
                     Añadir al Carro
                 </button>
+                <button class = "btn btn-sm btn-success" @click = "$emit('goDetail', user)">
+                    Detalle
+                </button>
             </div>
         </div>
     </div>

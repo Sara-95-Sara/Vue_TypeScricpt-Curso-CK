@@ -4,7 +4,11 @@
       Cargando ...
     </div>
     <div class = "user-list" v-else>
-      <UserItem v-for = "user in users" :key = "user.id" :user = "user" @addCart="addElementToCart" /> 
+      <UserItem v-for = "user in users" 
+        :key = "user.id"   
+        :user = "user" 
+        @addCart="addElementToCart"
+        @goDetail ="Detail" /> 
     </div>
    
   </div>
@@ -15,6 +19,9 @@ import useUsers from '@/composables/useUsers';
 import { defineComponent } from 'vue';
 import UserItem from "@/components/UserItem.vue";
 import { useCart } from '@/composables/useCart';
+import { User } from '@/models/user';
+import { useRouter } from 'vue-router';
+
 
 
 export default defineComponent({
@@ -30,11 +37,17 @@ export default defineComponent({
     // composable de cart(carrito)
     const {addElementToCart} = useCart();
 
+    const router = useRouter();
+
     fetchUsers();
 
-    return {users, isLoading, addElementToCart}
+    return {
+      users,
+      isLoading, 
+      addElementToCart, 
+      Detail: (user: User) => router.push({ name: 'detail', params: {id: user.id}})
+    }
   }
-
 });
 </script>
 
