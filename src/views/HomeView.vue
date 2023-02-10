@@ -4,7 +4,7 @@
       Cargando ...
     </div>
     <div class = "user-list" v-else>
-      <UserItem v-for = "user in users" :key = "user.id" :user = "user"/> 
+      <UserItem v-for = "user in users" :key = "user.id" :user = "user" @addCart="addElementToCart" /> 
     </div>
    
   </div>
@@ -14,6 +14,7 @@
 import useUsers from '@/composables/useUsers';
 import { defineComponent } from 'vue';
 import UserItem from "@/components/UserItem.vue";
+import { useCart } from '@/composables/useCart';
 
 
 export default defineComponent({
@@ -26,9 +27,12 @@ export default defineComponent({
   setup() {
     const {users, isLoading, fetchUsers} = useUsers();
 
+    // composable de cart(carrito)
+    const {addElementToCart} = useCart();
+
     fetchUsers();
 
-    return {users, isLoading}
+    return {users, isLoading, addElementToCart}
   }
 
 });

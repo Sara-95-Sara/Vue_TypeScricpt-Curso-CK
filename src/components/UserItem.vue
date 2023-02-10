@@ -6,6 +6,12 @@
         <div class = "user-info">
             <div class = "user-name">{{ user.name }}</div>
             <div class = "user-email">{{ user.email }}</div>
+            <div class ="buttons">
+                <button class = "btn btn-sm btn-primary"
+                   @click = "$emit('addCart', user)">
+                    Añadir al Carro
+                </button>
+            </div>
         </div>
     </div>
 </template>
