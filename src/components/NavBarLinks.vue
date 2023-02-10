@@ -6,6 +6,9 @@
                 <router-link :to = "{name: 'home'}">Users</router-link>
             </li>
             <li>
+                <router-link :to = "{name: 'userdetail', params: {id: '2'}}">User_Detail</router-link>
+            </li>
+            <li>
                 <router-link :to = "{name: 'about'}">Products</router-link>
             </li>
             <li>

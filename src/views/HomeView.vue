@@ -45,7 +45,7 @@ export default defineComponent({
       users,
       isLoading, 
       addElementToCart, 
-      Detail: (user: User) => router.push({ name: 'detail', params: {id: user.id}})
+      Detail: (user: User) => router.push({ name: 'userdetail', params: {id: user.id}})
     }
   }
 });

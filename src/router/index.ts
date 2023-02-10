@@ -12,6 +12,17 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView
   },
   {
+    path: '/userdetail/:id',
+    name: 'userdetail',
+    component: () =>
+      import(/* webpackChunkName: "userdetailView" */ "../views/UserDetailView.vue"),
+    props: (route) => {
+      const id = Number(route.params.id);
+      const userRole = localStorage.getItem('userRole');
+      return isNaN(id) ? { id: null, userRole } : { id, userRole };
+    }  
+  },
+  {
     path: '/about',
     name: 'about',  // name no es obligatorio
     //component: AboutView
@@ -31,6 +42,7 @@ const routes: Array<RouteRecordRaw> = [
       return isNaN(id) ? { id: null, userRole } : { id, userRole };
     }  
   },
+
 ]
 
 const router = createRouter({
