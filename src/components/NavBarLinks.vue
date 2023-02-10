@@ -3,13 +3,13 @@
         <ul>
             <li>
            <!-- <router-link to = "/">Home</router-link>  -->
-                <router-link :to = "{name: 'home'}">Home</router-link>
+                <router-link :to = "{name: 'home'}">Users</router-link>
             </li>
             <li>
-                <router-link :to = "{name: 'about'}">About</router-link>
+                <router-link :to = "{name: 'about'}">Products</router-link>
             </li>
             <li>
-                <router-link :to = "{name: 'detail', params: {id: '152'}}">Detail</router-link>
+                <router-link :to = "{name: 'detail', params: {id: '152'}}">Product_Detail</router-link>
             </li>
         </ul>
     </nav>
