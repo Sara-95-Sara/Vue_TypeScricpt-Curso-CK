@@ -1,25 +1,45 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/> 
+    <div v-if = "isLoading">
+      Cargando ...
+    </div>
+    <div class = "user-list" v-else>
+      <UserItem v-for = "user in users" :key = "user.id" :user = "user"/> 
+    </div>
+   
   </div>
 </template>
 
 <script lang="ts">
+import useUsers from '@/composables/useUsers';
 import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import UserItem from "@/components/UserItem.vue";
+
 
 export default defineComponent({
   name: 'HomeView',
   components: {
-    HelloWorld,
+    UserItem,
   },
+
+  // lo que hay en  composicion useUsers
+  setup() {
+    const {users, isLoading, fetchUsers} = useUsers();
+
+    fetchUsers();
+
+    return {users, isLoading}
+  }
+
 });
 </script>
 
 
 <style scoped>
-.home {
-  background-color: red;
+.user-list {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  gap: 1rem 1rem;
 }
 </style>
