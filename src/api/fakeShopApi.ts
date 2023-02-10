@@ -11,7 +11,13 @@ const fakeShopApi = axios.create({
 });
 fakeShopApi.interceptors.request.use((config) => {
     // TODO
-    (config.headers as AxiosHeaders).set("Authorization", `Bearer popo`);
+    const token = localStorage.getItem('token') ?? ''; // ?? si es null sea vacio.
+    if(token) {
+      (config.headers as AxiosHeaders).set("Authorization", `Bearer ${token}`); // JWT
+    } else {
+      return config;
+    }
+    
     return config;
   });
 export default fakeShopApi;
