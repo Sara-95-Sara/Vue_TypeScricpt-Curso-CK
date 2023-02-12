@@ -8,6 +8,9 @@ const getters: GetterTree<IProductsState, IState> = {
     },
     getIsLoading(state) {
         return state.isLoading;
+    },
+    getProduct(state) {
+        return state.selectedProduct;
     }
 }
 

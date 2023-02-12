@@ -1,5 +1,5 @@
 <template>
-    <div v-if = "product">
+    <div v-if = "!isLoading">
         <h1>Nombre: {{ product?.title }}</h1>
         <h1>id: {{ product.id }}</h1> 
         <h2>Precio: {{ product.price }} $</h2>
@@ -22,6 +22,7 @@ import { useCart } from "@/composables/useCart";
 import fakeShopApi from '@/api/fakeShopApi';
 import { Product } from '@/models/product';
 import { AxiosResponse } from 'axios';
+import useProducts from '@/composables/useProducts';
 
 export default defineComponent({
     props: {
@@ -34,13 +35,16 @@ export default defineComponent({
 
     setup(props) {
         const { addElementToCart } = useCart();
-        let product = ref<Product>();
+        const { product, fetchProductById, isLoading } = useProducts()
+        /*let product = ref<Product>();
         fakeShopApi
           .get<unknown, AxiosResponse<Product>>(`/products/${props.id}`)
-          .then((resp) => (product.value = resp.data));
-        return {
+          .then((resp) => (product.value = resp.data)); */
+        fetchProductById(props.id);
+          return {
            product,
            addElementToCart,
+           isLoading
         };
     }
 })

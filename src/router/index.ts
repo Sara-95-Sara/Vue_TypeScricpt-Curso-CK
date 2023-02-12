@@ -42,6 +42,10 @@ const routes: Array<RouteRecordRaw> = [
       return isNaN(id) ? { id: null, userRole } : { id, userRole };
     }  
   },
+  {
+    path: "/:pathMatch(.*)",
+    component: import(/* webpackChunkName: "notFound" */ '../views/NotFound.vue' )
+  }
 
 ]
 
